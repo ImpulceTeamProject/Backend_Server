@@ -9,7 +9,8 @@ drf-spectacular==0.26.0
 inflection==0.5.1
 jsonschema==4.17.3
 Markdown==3.4.1
-psycopg2==2.9.5
+Pillow==9.4.0
+psycopg2-binary==2.9.5
 PyJWT==2.6.0
 pyrsistent==0.19.3
 pytz==2022.7.1

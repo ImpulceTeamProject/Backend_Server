@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+    impulse_team_back:
+      build: .
+      ports:
+        - "8080:8080"
+      command: sh -c "python manage.py migrate &&
+               python manage.py runserver 0.0.0.0:8080"
+      volumes:
+        - .:/code
+      depends_on:
+        - bd
+    bd:
+      image: postgres:14.2
+      environment:
+        - POSTGRES_USER=impulse_team
+        - POSTGRES_PASSWORD=2564371980
+        - POSTGRES_DB=impulse_team_db
+        - "POSTGRES_HOST_AUTH_METHOD=trust"
+      volumes:
+        - init_database:/docker-entrypoint-initdb.d
+        - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+  init_database:
