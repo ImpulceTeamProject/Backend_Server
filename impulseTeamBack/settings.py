@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
     'rest_framework_simplejwt',
     'drf_spectacular',
     'django_filters',
+    'gallery',
 ]
 
 MIDDLEWARE = [
@@ -93,6 +95,27 @@ DATABASES = {
     }
 }
 
+# Rest framework
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+
+# Swagger sattings
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Impulse Team Backend API',
+    'DESCRIPTION': 'Impulse Team Backend API',
+    'VERSION': '1.0.0',
+    'SERVE_PUBLIC': True,
+    'SERVE_INCLUDE_SCHEMA': True,
+    'SERVE_AUTHENTICATION': ['rest_framework.authentication.BasicAuthentication',
+                             'rest_framework_simplejwt.authentication.JWTAuthentication', ],
+
+    # OTHER SETTINGS
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -129,6 +152,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+MEDIA_ROOT = 'images/'
+
+MEDIA_URL = '/images/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
