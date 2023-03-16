@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from gallery.urls import photosRouter
-from impulseTeamBack.settings import  DEBUG, MEDIA_URL, MEDIA_ROOT, STATIC_URL
+from trainers.urls import trainers_router
+from impulseTeamBack.settings import DEBUG, MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
@@ -29,6 +30,7 @@ urlpatterns = [
 ]
 
 urlpatterns += photosRouter.urls
+urlpatterns += trainers_router.urls
 
 if DEBUG:
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

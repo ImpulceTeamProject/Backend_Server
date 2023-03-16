@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'django_filters',
     'gallery',
+    'trainers',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
         'NAME': env('DATABASE_NAME'),
         'USER': env('DATABASE_USER'),
         'PASSWORD': env('DATABASE_PASSWORD'),
-        'HOST': '127.0.0.1',
+        'HOST': 'bd',
         'PORT': '5432',
     }
 }
