@@ -17,13 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from gallery.urls import photosRouter
 from trainers.urls import trainers_router
+from jwt_auth.urls import auth_urls
 from impulseTeamBack.settings import DEBUG, MEDIA_URL, MEDIA_ROOT
 from django.conf.urls.static import static
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,10 +29,9 @@ urlpatterns = [
     # Optional UI:
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
     path('api/schema/redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),
-    path('api/token/', TokenObtainPairView.as_view(), name='login'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
+urlpatterns += auth_urls
 urlpatterns += photosRouter.urls
 urlpatterns += trainers_router.urls
 

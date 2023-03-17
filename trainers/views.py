@@ -8,5 +8,5 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 class TrainerViewSet(ModelViewSet):
     queryset = Trainer.objects.all()
     serializer_class = TrainerSerializer
-    # permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
